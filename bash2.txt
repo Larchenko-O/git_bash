@@ -1,0 +1,59 @@
+2. Зайти в домашнюю директорию через терминал.
+3. Создать папку test 3
+4. Добавить в папку test 3 три файла 4, 5 и 6, в каждом из которых должно быть по 4 строки row1, row2, row3, row4
+5. Найдите строку row2 в файле 5
+6. Найдите строку row в папке test3
+7. Посчитайте сколько строк с содержимым row в файле 6
+8. Найдите файл 5 внутри папки test3
+9. Используя команду find, удалите файл 5
+10. Используя команду echo, добавьте слово test в файл 4
+11. Замените слово test в файле 4 на fail
+12. Добавьте в файл 4 слово test так, чтобы сохранилось содержимое
+13. Просмотрите все процессы для юзеров не только в консоли, которые происходят в системе
+14. Убейте процесс 666 в консоли
+15. Узнайте доступность ресурса rusau.net, используя ping
+16. Отправьте 5 пакетов на сайт rusau.net
+17. Используя GET и команду curl, получите информацию о зарегистрированных питомцах с любым статусом на https://petstore.swagger.io/
+18. Используя POST и команду curl, создайте нового пользователя на https://petstore.swagger.io/
+
+2.  cd /Users/alexey.larchenko/documents/BASH
+3. mkdir test3
+4. touch  ./test3/4 ./test3/5 ./test3/6 
+    echo -e "row1\nrow2\nrow3\nrow4" >> ./test3/4 >> ./test3/5 >> ./test3/6
+5. grep "row2" ./test3/5
+6. find ./test3 h -type f -exec grep "row" {} \;  
+7. grep "row" ./test3/6 -c 
+8. find ./test3 -name "5"
+9. find . -type f -name "5" -exec rm -f {} \;
+10. echo "test" >> ./test3/4 
+11. sed -i -e 's/test/fail/' ./test3/4
+12. echo "test" >> ./test3/4
+13. ps aux
+14. kill 666
+15. ping rusau.net
+16. ping -c 3 rusau.net
+17. curl -X 'GET' \
+  'https://petstore.swagger.io/v2/pet/findByStatus?status=available&status=pending&status=sold' \
+  -H 'accept: application/json'
+18.curl -X 'POST' \
+  'https://petstore.swagger.io/v2/pet' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "id": 31232,
+  "category": {
+    "id": 1,
+    "name": "dog"
+  },
+  "name": "doggie",
+  "photoUrls": [
+    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fmalinois.com.ua%2Fru%2F2020%2F11%2F11%2Fno-breed-dog-review%2F&psig=AOvVaw1fD-ymBnvONIxVdKk2_irF&ust=1729414173600000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDR_f2HmokDFQAAAAAdAAAAABAE"
+  ],
+  "tags": [
+    {
+      "id": 5,
+      "name": "gav"
+    }
+  ],
+  "status": "available"
+}'
